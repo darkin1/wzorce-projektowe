@@ -1,0 +1,22 @@
+version: '2'
+services:
+  web:
+    image: webdevops/php-nginx:ubuntu-16.04
+    ports:
+    - "5000:80"
+    volumes:
+    - ./project/:/app/
+    working_dir: /app/
+    links:
+      - mysql
+  mysql:
+    image: mysql:latest
+    volumes:
+      - ./db/:/var/lib/mysql/
+    environment:
+      - MYSQL_ROOT_PASSWORD=toor
+      - MYSQL_DATABASE=lifeofcto
+      - MYSQL_USER=dariusz
+      - MYSQL_PASSWORD:qwerty
+    ports:
+      - 127.0.0.1:8000:3306
