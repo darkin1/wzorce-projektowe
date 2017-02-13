@@ -65,7 +65,7 @@ class IoC
     public static function resolve($name)
     {
         if (!static::registered($name)) {
-            throw new Exception(sprintf('%s is not registerd', $name));
+            throw new Exception(sprintf('%s is not registered', $name));
         }
 
         $name = static::$registry[$name];
@@ -94,6 +94,7 @@ $ioc::register('config', function () {
 });
 
 $ioc::register('user', function ($ioc) {
+
     $db = $ioc::resolve('db');
     $config = $ioc::resolve('config');
 
