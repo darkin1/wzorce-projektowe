@@ -1,11 +1,6 @@
 <?php
 
-interface HashContract
-{
-    public function encode($secret);
-}
-
-class Md5 implements HashContract
+class Md5
 {
     public function encode($secret)
     {
@@ -13,7 +8,7 @@ class Md5 implements HashContract
     }
 }
 
-class Base64 implements HashContract
+class Base64
 {
     public function encode($secret)
     {
@@ -21,7 +16,7 @@ class Base64 implements HashContract
     }
 }
 
-class Sha1 implements HashContract
+class Sha1
 {
     public function encode($secret)
     {
@@ -34,11 +29,10 @@ class Hash
 {
     private $hash;
 
-    public function __construct(HashContract $hash)
+    public function __construct($hash)
     {
         $this->hash = $hash;
     }
-
 
     public function encode($secret)
     {
